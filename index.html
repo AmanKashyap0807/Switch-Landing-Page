@@ -20,7 +20,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="switch logo (2).png" alt="SWITCH Logo" class="logo">
+                <img src="lightning icon.png" alt="SWITCH Logo" class="logo">
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -59,12 +59,16 @@
                     <button class="btn btn-accent" onclick="scrollToSection('creator-program')">
                         <span>Become a Creator</span>
                     </button>
-                    <button class="btn btn-primary small-btn" onclick="scrollToSection('anonymous-stories')">
-                        <span>Submit Anonymous Story</span>
-                    </button>
                 </div>
             </div>
         </div>
+
+        <!-- Button moved here (outside hero-container) -->
+        <button class="anonymous-story-bottom-btn" onclick="scrollToSection('anonymous-stories')"
+            aria-label="Submit Anonymous Story">
+            <i class="fas fa-user-secret"></i>
+            <span>Submit Anonymous Story</span>
+        </button>
     </section>
 
     <!-- About Section -->

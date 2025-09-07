@@ -312,6 +312,63 @@ body.animation-complete>*:not(#startup-animation) {
     width: 100%;
 }
 
+/* New styles for the secondary CTA container */
+.secondary-cta {
+    margin-top: 2rem;
+    /* Space it below the main CTAs */
+    text-align: center;
+    /* Center the button */
+    opacity: 0.8;
+    /* Subtle visibility to reduce prominence */
+    transition: opacity 0.3s ease;
+}
+
+.secondary-cta:hover {
+    opacity: 1;
+    /* Slight fade-in on hover for interactivity without being distracting */
+}
+
+/* New subtle button class for less prominent styling */
+.btn-subtle {
+    font-size: 0.9rem;
+    /* Smaller font */
+    padding: 10px 20px;
+    /* Reduced padding for smaller size */
+    background: transparent;
+    /* No background for ghost effect */
+    color: var(--gray-500);
+    /* Subtle color */
+    border: 1px solid var(--gray-400);
+    /* Light border */
+    border-radius: 8px;
+    /* Softer corners */
+    transition: all 0.3s ease;
+    width: auto;
+    /* Not full-width like main buttons */
+    display: inline-flex;
+    /* Inline for less space usage */
+    align-items: center;
+    gap: 0.5rem;
+    /* Space for icon */
+}
+
+.btn-subtle:hover {
+    background: rgba(255, 107, 53, 0.1);
+    /* Very light accent on hover */
+    color: var(--accent-color);
+    /* Subtle color shift */
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+    /* Gentle lift */
+    box-shadow: none;
+    /* No shadow to keep it minimal */
+}
+
+.btn-subtle i {
+    font-size: 1rem;
+    /* Smaller icon */
+}
+
 /* Button Styles */
 .btn,
 .btn-primary,
@@ -449,9 +506,52 @@ body.animation-complete>*:not(#startup-animation) {
 
 .btn-ghost:hover {
     background: #363636;
-    /* Changed from var(--gray-100) to Deep Charcoal */
     color: var(--accent-color);
     border-color: var(--accent-color);
+}
+
+/* New bottom anonymous story button */
+.anonymous-story-bottom-btn {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background: rgba(34, 34, 34, 0.75);
+    border: 1px solid var(--gray-300);
+    color: var(--gray-600);
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 28px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    transition: var(--transition);
+    line-height: 1;
+}
+
+.anonymous-story-bottom-btn:hover {
+    background: var(--gray-100);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateX(-50%) translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .anonymous-story-bottom-btn {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 14px;
+        font-size: 0.7rem;
+    }
+
+    .anonymous-story-bottom-btn i {
+        font-size: 0.75rem;
+    }
 }
 
 .secondary-options {
@@ -1034,6 +1134,15 @@ section {
 
     .container {
         padding: 0 15px;
+    }
+
+    .btn-subtle {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
+
+    .secondary-cta {
+        margin-top: 1.5rem;
     }
 }
 
