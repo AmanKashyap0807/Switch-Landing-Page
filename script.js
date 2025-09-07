@@ -81,13 +81,10 @@ function scrollToSection(sectionId) {
     }
 }
 
-// Form submission functions (replace with actual form URLs)
+// Form submission functions (updated with correct URLs)
 function openPreRegistration() {
-    // Replace with actual Google Form URL
-    const preRegistrationUrl = 'https://forms.google.com/pre-registration';
+    const preRegistrationUrl = 'https://forms.gle/YOUR_PRE_REGISTRATION_FORM_ID'; // Replace with actual URL
     window.open(preRegistrationUrl, '_blank');
-
-    // Analytics tracking (if needed)
     if (typeof gtag !== 'undefined') {
         gtag('event', 'click', {
             event_category: 'CTA',
@@ -97,11 +94,8 @@ function openPreRegistration() {
 }
 
 function openCreatorRegistration() {
-    // Replace with actual Google Form URL
     const creatorRegistrationUrl = 'https://forms.gle/B5yBxk3Yq9AZsq1C8';
     window.open(creatorRegistrationUrl, '_blank');
-
-    // Analytics tracking (if needed)
     if (typeof gtag !== 'undefined') {
         gtag('event', 'click', {
             event_category: 'CTA',
@@ -111,11 +105,8 @@ function openCreatorRegistration() {
 }
 
 function openAnonymousStory() {
-    // Replace with actual Google Form URL
     const anonymousStoryUrl = 'https://forms.gle/ocE22iqRHeXtWq348';
     window.open(anonymousStoryUrl, '_blank');
-
-    // Analytics tracking (if needed)
     if (typeof gtag !== 'undefined') {
         gtag('event', 'click', {
             event_category: 'CTA',
