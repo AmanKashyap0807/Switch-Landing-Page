@@ -98,7 +98,7 @@ function openPreRegistration() {
 
 function openCreatorRegistration() {
     // Replace with actual Google Form URL
-    const creatorRegistrationUrl = 'https://forms.google.com/creator-registration';
+    const creatorRegistrationUrl = 'https://forms.gle/B5yBxk3Yq9AZsq1C8';
     window.open(creatorRegistrationUrl, '_blank');
 
     // Analytics tracking (if needed)
@@ -112,7 +112,7 @@ function openCreatorRegistration() {
 
 function openAnonymousStory() {
     // Replace with actual Google Form URL
-    const anonymousStoryUrl = 'https://forms.google.com/anonymous-story';
+    const anonymousStoryUrl = 'https://forms.gle/ocE22iqRHeXtWq348';
     window.open(anonymousStoryUrl, '_blank');
 
     // Analytics tracking (if needed)
@@ -385,3 +385,81 @@ loadingStyle.textContent = `
     }
 `;
 document.head.appendChild(loadingStyle);
+
+// Enhanced button state management
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.btn, .btn-primary, .btn-secondary, .btn-accent');
+
+    buttons.forEach(button => {
+        // Handle click events
+        button.addEventListener('click', function (e) {
+            // Remove hover class if it exists
+            this.classList.remove('force-hover');
+            this.classList.add('force-reset');
+
+            // Force immediate reset
+            this.style.transition = 'all 0.1s ease';
+
+            // Reset after animation
+            setTimeout(() => {
+                this.style.transition = '';
+                this.classList.remove('force-reset');
+                this.blur(); // Remove focus
+            }, 100);
+        });
+
+        // Handle touch devices
+        button.addEventListener('touchstart', function () {
+            this.classList.add('touching');
+        });
+
+        button.addEventListener('touchend', function () {
+            this.classList.remove('touching');
+            this.classList.add('force-reset');
+            setTimeout(() => {
+                this.classList.remove('force-reset');
+                this.blur();
+            }, 50);
+        });
+
+        // Handle mouse leave
+        button.addEventListener('mouseleave', function () {
+            this.classList.remove('force-hover');
+            this.classList.add('force-reset');
+            setTimeout(() => {
+                this.classList.remove('force-reset');
+            }, 100);
+        });
+
+        // Handle blur event
+        button.addEventListener('blur', function () {
+            this.classList.add('force-reset');
+            setTimeout(() => {
+                this.classList.remove('force-reset');
+            }, 50);
+        });
+    });
+
+    // Reset all button states on scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            buttons.forEach(button => {
+                button.classList.add('force-reset');
+                button.blur();
+                setTimeout(() => {
+                    button.classList.remove('force-reset');
+                }, 50);
+            });
+        }, 50);
+    });
+
+    // Reset button states on window focus change
+    window.addEventListener('blur', () => {
+        buttons.forEach(button => {
+            button.classList.add('force-reset');
+            button.blur();
+        });
+    });
+});

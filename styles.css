@@ -318,7 +318,6 @@ body.animation-complete>*:not(#startup-animation) {
 .btn-secondary,
 .btn-accent {
     background: #363636;
-    /* Changed from var(--gray-400) to Deep Charcoal */
     color: var(--primary-white);
     border: none;
     border-radius: 12px;
@@ -330,7 +329,7 @@ body.animation-complete>*:not(#startup-animation) {
     display: inline-block;
     position: relative;
     overflow: hidden;
-    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
     box-shadow: var(--shadow);
     width: 100%;
     text-align: center;
@@ -342,21 +341,21 @@ body.animation-complete>*:not(#startup-animation) {
 .btn-accent::after {
     content: '';
     position: absolute;
-    left: -60%;
+    left: -100%;
     top: 0;
-    width: 220%;
+    width: 100%;
     height: 100%;
     background: linear-gradient(90deg, var(--accent-color) 0%, var(--secondary-accent) 100%);
-    opacity: 0;
-    transition: opacity 0.5s, left 0.5s;
+    transition: left 0.4s ease;
     z-index: 0;
+    pointer-events: none;
 }
 
+/* Only show animation on hover, not on focus or active */
 .btn:hover::after,
 .btn-primary:hover::after,
 .btn-secondary:hover::after,
 .btn-accent:hover::after {
-    opacity: 1;
     left: 0;
 }
 
@@ -368,12 +367,65 @@ body.animation-complete>*:not(#startup-animation) {
     box-shadow: var(--shadow-lg);
 }
 
+/* Active state (click) - immediate reset */
+.btn:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-accent:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+.btn:active::after,
+.btn-primary:active::after,
+.btn-secondary:active::after,
+.btn-accent:active::after {
+    left: -100%;
+    transition: left 0.1s ease;
+}
+
+/* Focus state - no animation */
+.btn:focus:not(:hover)::after,
+.btn-primary:focus:not(:hover)::after,
+.btn-secondary:focus:not(:hover)::after,
+.btn-accent:focus:not(:hover)::after {
+    left: -100%;
+}
+
 .btn span,
 .btn-primary span,
 .btn-secondary span,
 .btn-accent span {
     position: relative;
     z-index: 2;
+}
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+
+    .btn:hover::after,
+    .btn-primary:hover::after,
+    .btn-secondary:hover::after,
+    .btn-accent:hover::after {
+        left: -100%;
+    }
+
+    .btn:active::after,
+    .btn-primary:active::after,
+    .btn-secondary:active::after,
+    .btn-accent:active::after {
+        left: 0;
+        transition: left 0.2s ease;
+    }
+}
+
+/* Force reset class */
+.btn.force-reset::after,
+.btn-primary.force-reset::after,
+.btn-secondary.force-reset::after,
+.btn-accent.force-reset::after {
+    left: -100% !important;
+    transition: left 0.1s ease !important;
 }
 
 .btn-ghost {
