@@ -266,7 +266,8 @@ body.animation-complete>*:not(#startup-animation) {
     background: var(--primary-black);
     position: relative;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 20px 140px;
+    /* Added bottom padding for button clearance */
 }
 
 .hero-container {
@@ -513,7 +514,8 @@ body.animation-complete>*:not(#startup-animation) {
 /* New bottom anonymous story button */
 .anonymous-story-bottom-btn {
     position: absolute;
-    bottom: 32px;
+    bottom: calc(env(safe-area-inset-bottom, 0) + 28px);
+    /* Safe-area aware */
     left: 50%;
     transform: translateX(-50%);
     padding: 12px 20px;
@@ -528,7 +530,8 @@ body.animation-complete>*:not(#startup-animation) {
     border-radius: 28px;
     cursor: pointer;
     backdrop-filter: blur(8px);
-    z-index: 10;
+    z-index: 20;
+    /* Raised to stay above hero content */
     transition: var(--transition);
     line-height: 1;
 }
@@ -542,10 +545,8 @@ body.animation-complete>*:not(#startup-animation) {
 
 @media (max-width: 480px) {
     .anonymous-story-bottom-btn {
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 8px 14px;
+        bottom: calc(env(safe-area-inset-bottom, 0) + 20px);
+        padding: 8px 16px;
         font-size: 0.7rem;
     }
 
@@ -664,40 +665,47 @@ section {
     line-height: 1.6;
 }
 
-.why-different h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-white);
-}
-
 .features-list {
     list-style: none;
     padding: 0;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .features-list li {
     padding: 0.5rem 0;
     position: relative;
-    padding-left: 2rem;
     color: var(--gray-700);
-}
-
-.features-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: bold;
+    display: block;
+    text-align: center;
 }
 
 .platform-features {
     margin-top: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 0;
+    list-style: none;
+    padding: 0;
+    text-align: center;
 }
 
 .platform-features li {
     padding: 0.25rem 0;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    display: block;
+    text-align: center;
+}
+
+.why-different {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.why-different h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-white);
+    text-align: center;
 }
 
 /* Pre-registration and Creator Program */
@@ -1062,8 +1070,10 @@ section {
     }
 
     .hero {
-        padding: 0 15px;
-        min-height: 90vh;
+        padding: 0 15px 130px;
+        /* Bottom padding for space on smaller screens */
+        min-height: 100dvh;
+        /* Dynamic viewport height for mobile UI chrome */
     }
 
     .tagline {
