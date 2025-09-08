@@ -149,81 +149,58 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    opacity: 1;
-    transition: opacity 1s ease;
-}
-
-#startup-animation::before {
-    display: none;
+    animation: fadeOut 1s ease 2s forwards;
+    /* Fades out after zoom-in */
 }
 
 #animated-logo {
-    width: 60vw;
-    max-width: 500px;
-    min-width: 250px;
-    will-change: transform, opacity;
-    transition: none;
-    animation: logoFloat 2s ease-in-out infinite;
+    width: 150px;
+    height: auto;
+    animation: smoothZoomIn 2s ease-in-out forwards;
+    /* Total duration increased to 3.5s */
 }
 
-body.animation-started #animated-logo {
-    animation: enhancedShrinkAndMove 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s forwards;
+/* Keyframes for smooth zoom-in with delay */
+@keyframes smoothZoomIn {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    20% {
+        transform: scale(1);
+        /* Hold the logo for 1-2 seconds */
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(50);
+        /* Fully zoom in */
+        opacity: 0;
+        /* Fade out the logo */
+    }
 }
 
-body.animation-complete #startup-animation {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 1s ease;
+/* Keyframes for fade-out */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
+/* Ensure the body content is hidden until the animation completes */
 body:not(.animation-complete)>*:not(#startup-animation) {
     opacity: 0;
-    transform: translateY(20px);
 }
 
-body.animation-complete>*:not(#startup-animation) {
+body.animation-complete>* {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
-}
-
-@keyframes enhancedShrinkAndMove {
-    0% {
-        transform: scale(1) translate(0, 0) rotate(0deg);
-        opacity: 1;
-    }
-
-    25% {
-        transform: scale(1.1) translate(0, -20px) rotate(5deg);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(0.8) translate(0, 0) rotate(-2deg);
-        opacity: 0.9;
-    }
-
-    80% {
-        transform: scale(var(--logo-scale)) translate(calc(var(--logo-translate-x) * 0.8), calc(var(--logo-translate-y) * 0.8)) rotate(0deg);
-        opacity: 0.7;
-    }
-
-    100% {
-        transform: scale(var(--logo-scale)) translate(var(--logo-translate-x), var(--logo-translate-y)) rotate(0deg);
-        opacity: 0;
-    }
-}
-
-@keyframes logoFloat {
-
-    0%,
-    100% {
-        transform: translateY(0px) scale(1);
-    }
-
-    50% {
-        transform: translateY(-15px) scale(1.02);
-    }
+    transition: opacity 0.5s ease;
 }
 
 #startup-animation::after {

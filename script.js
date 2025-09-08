@@ -48,6 +48,11 @@ window.addEventListener('load', () => {
             body.classList.add('animation-complete');
         }, 1000);
     }
+
+    // Add a delay to ensure the animation completes before showing the content
+    setTimeout(() => {
+        body.classList.add('animation-complete');
+    }, 1000); // Matches the new duration of the smoothZoomIn animation
 });
 
 // Close mobile menu when clicking on a link
