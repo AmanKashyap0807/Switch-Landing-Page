@@ -86,6 +86,15 @@ function scrollToSection(sectionId) {
     }
 }
 
+// Add functionality to the lightning icon
+const lightningIcon = document.querySelector('.nav-logo .logo');
+
+if (lightningIcon) {
+    lightningIcon.addEventListener('click', () => {
+        scrollToSection('download');
+    });
+}
+
 // Form submission functions (updated with correct URLs)
 function openPreRegistration() {
     const preRegistrationUrl = 'https://forms.gle/YOUR_PRE_REGISTRATION_FORM_ID'; // Replace with actual URL
