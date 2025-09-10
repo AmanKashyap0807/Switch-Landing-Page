@@ -642,10 +642,12 @@ section {
     line-height: 1.6;
 }
 
+/* Update styles for the features list */
 .features-list {
     list-style: none;
     padding: 0;
-    text-align: center;
+    text-align: left;
+    /* Align text to the left */
     max-width: 600px;
     margin: 0 auto;
 }
@@ -654,23 +656,54 @@ section {
     padding: 0.5rem 0;
     position: relative;
     color: var(--gray-700);
-    display: block;
-    text-align: center;
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Vertically align items */
+    gap: 0.5rem;
+    /* Add spacing between the icon and text */
 }
 
+.features-list li::before {
+    content: '✔';
+    /* Add a tick mark icon */
+    color: var(--accent-color);
+    /* Use the accent color for the icon */
+    font-size: 1.2rem;
+    /* Adjust the size of the icon */
+    margin-right: 0.5rem;
+    /* Add spacing between the icon and text */
+}
+
+/* Update styles for the nested platform features */
 .platform-features {
     margin-top: 0.5rem;
-    margin-left: 0;
+    margin-left: 1.2rem;
+    /* Indent nested list */
     list-style: none;
     padding: 0;
-    text-align: center;
+    text-align: left;
+    /* Align text to the left */
 }
 
 .platform-features li {
-    padding: 0.25rem 0;
+    padding: 0.4rem 0;
     font-size: 0.95rem;
-    display: block;
-    text-align: center;
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Vertically align items */
+    gap: 0.5rem;
+    /* Add spacing between the icon and text */
+}
+
+.platform-features li::before {
+    content: '✔';
+    background: linear-gradient(135deg, var(--primary-white), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1rem;
+    margin-right: 0.5rem;
 }
 
 .why-different {
@@ -1251,4 +1284,12 @@ section {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
     }
+}
+
+/* Heading above list */
+.list-heading {
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--gray-700);
+    text-align: left;
 }
