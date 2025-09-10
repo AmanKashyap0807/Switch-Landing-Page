@@ -260,25 +260,34 @@ body.animation-complete>* {
 }
 
 .logo-container {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    /* Add spacing below the logo */
     animation: float 3s ease-in-out infinite;
 }
 
 .hero-logo {
-    height: 120px;
+    height: 200px;
+    /* Adjusted height for desktop */
     width: auto;
-    max-width: 100%;
+    /* Maintain aspect ratio */
+    max-width: none;
+    /* Ensure no restriction on width */
 }
 
 .tagline {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    /* Adjust font size */
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-top: 0;
+    /* Remove extra margin above */
+    margin-bottom: 2rem;
+    /* Add spacing below */
     background: linear-gradient(135deg, var(--primary-white), var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeInUp 1s ease-out 0.3s both;
+    text-align: center;
+    /* Center-align the tagline */
 }
 
 .cta-buttons {
@@ -959,6 +968,9 @@ section {
 .social-links {
     display: flex;
     gap: 1rem;
+    /* Ensure the container itself is a flex container if needed for alignment */
+    justify-content: center;
+    /* This will center the icons if the container is wider */
 }
 
 .social-link {
@@ -972,6 +984,8 @@ section {
     color: var(--primary-white);
     text-decoration: none;
     transition: var(--transition);
+    font-size: 1.2rem;
+    /* Added font-size for the icon */
 }
 
 .social-link:hover {
@@ -1094,7 +1108,8 @@ section {
     }
 
     .hero-logo {
-        height: 80px;
+        height: 150px;
+        /* Adjusted height for tablets */
     }
 
     .section-title {
@@ -1191,7 +1206,8 @@ section {
     }
 
     .hero-logo {
-        height: 60px;
+        height: 100px;
+        /* Adjusted height for mobile */
     }
 
     .section-title {

@@ -97,7 +97,7 @@ if (lightningIcon) {
 
 // Form submission functions (updated with correct URLs)
 function openPreRegistration() {
-    const preRegistrationUrl = 'https://forms.gle/YOUR_PRE_REGISTRATION_FORM_ID'; // Replace with actual URL
+    const preRegistrationUrl = 'https://forms.gle/AEcCiR62GRZAxjmV6';
     window.open(preRegistrationUrl, '_blank');
     if (typeof gtag !== 'undefined') {
         gtag('event', 'click', {
