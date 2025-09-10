@@ -204,7 +204,7 @@ body.animation-complete>* {
 }
 
 #startup-animation::after {
-    content: 'We Never Snitch';
+    content: '';
     position: absolute;
     bottom: 20%;
     left: 50%;
@@ -699,11 +699,13 @@ section {
 
 .platform-features li::before {
     content: '✔';
-    background: linear-gradient(135deg, var(--primary-white), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* Add a tick mark icon */
+    color: var(--secondary-accent);
+    /* Use the secondary accent color for the icon */
     font-size: 1rem;
+    /* Adjust the size of the icon */
     margin-right: 0.5rem;
+    /* Add spacing between the icon and text */
 }
 
 .why-different {
